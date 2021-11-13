@@ -74,6 +74,7 @@ namespace blog
                         {
 
                             var posts = db.Posts.Where(p => p.BlogId == selectedBlogId);
+
                             foreach (var i in posts)
                             {
                                 Console.WriteLine($"Post Id. {i.PostId} Post Title {i.Title}, Post Content {i.Content}");
@@ -107,10 +108,10 @@ namespace blog
 
                         post.Title = postTitle;
                         post.Content = postContent;
-
+                        post.BlogId = selectedBlogId2;
+                        
                         using (var db = new BlogContext())
                         {
-                            var posts = db.Posts.Where(p => p.BlogId == selectedBlogId2);
                             db.Add(post);
                             db.SaveChanges();
                         }
